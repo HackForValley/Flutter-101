@@ -1,4 +1,4 @@
-# flutter_app
+# tanishq_singla
 
 A new Flutter project.
 

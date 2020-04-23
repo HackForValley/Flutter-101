@@ -102,7 +102,7 @@ class MyApp extends StatelessWidget {
                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                              children: <Widget>[
                              Text("10th: 10 CGPA", style: TextStyle(fontSize: 30, color:Colors.black54),),
-                             Text("12th: 75% ", style: TextStyle(fontSize: 30, color:Colors.black54),),
+                             Text("12th: 87% ", style: TextStyle(fontSize: 30, color:Colors.black54),),
                              ],//children
                             ),//Row
                             SizedBox(height:10),

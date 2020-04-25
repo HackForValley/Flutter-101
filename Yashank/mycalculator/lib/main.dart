@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         accentColor:Colors.green.shade700,
         brightness: Brightness.dark,
       ),
-      home: MyHomePage(title: "Let's Claculate",),
+      home: MyHomePage(title: "Let's Calculate",),
     );
   }
 }

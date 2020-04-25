@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(Calculator());
-
+int sum = 0;
+int num1 = 0, num2 = 0;
+String error = '';
 class Calculator extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -46,18 +48,87 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final TextEditingController t1 = new TextEditingController(text: "");
+  final TextEditingController t2 = new TextEditingController(text: "");  
+  
 
-  void _incrementCounter() {
+  void _add() {
+    
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      error = '';
+      num1 = int.parse(t1.text);
+      num2 = int.parse(t2.text);
+      sum = num1+num2;
+
+
     });
   }
+  void _subtract() {
+    
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      error = '';
+      num1 = int.parse(t1.text);
+      num2 = int.parse(t2.text);
+      if(num2 > num1){
+        error = "Error";
+        sum = 00000;
+      }
+      else
+      sum = num1-num2;
+
+
+    });
+  }
+  void _multiply() {
+    
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      error = '';
+      num1 = int.parse(t1.text);
+      num2 = int.parse(t2.text);
+      
+      sum = num1*num2;
+
+
+    });
+  }
+
+void _divide() {
+    
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      error = '';
+      num1 = int.parse(t1.text);
+      num2 = int.parse(t2.text);
+      if(num2 == 0){
+        error = "Error";
+        sum = 00000;
+      }
+      else
+      sum = num1~/num2;
+
+
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +146,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Container(
+        margin: EdgeInsets.all(10),
+        
         child: ListView(
+          padding: EdgeInsets.all(10),
         
           
           children: <Widget>[
@@ -84,32 +158,53 @@ class _MyHomePageState extends State<MyHomePage> {
             Card(
             
               elevation: 20,
-              child: Padding(padding: EdgeInsets.all(10),child : Text("The result is: ",style: TextStyle(color: Colors.orange.shade200,fontSize: scrhgt * scrwid / 6000))),
+              child: Padding(padding: EdgeInsets.all(10),child : Text("Result: $error $sum",style: TextStyle(color: Colors.orange.shade200,fontSize: scrhgt * scrwid / 6000))),
             ),
             SizedBox(height: scrhgt * 0.05,),
             
             TextField(
-                
-                decoration: InputDecoration(
-                  hintText: "Input 1"
-                ),
-
-              ),
-            
-            TextField(
-              
+              controller: t1,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 hintText: "Input 1"
               ),
+
+              ),
+            SizedBox(height: scrhgt * 0.05,),
+            TextField(
+              controller: t2,
+              keyboardType: TextInputType.number,
+              
+              decoration: InputDecoration(
+                
+                hintText: "Input 2",
+                //hintStyle: ,
+              ),
               
             
             ),
-            SizedBox(height: scrhgt * 0.05,),
+            SizedBox(height: scrhgt * 0.1,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                RaisedButton(onPressed: (){},elevation: 50, child: Padding(padding: EdgeInsets.symmetric(horizontal: scrwid * 0.055,vertical: scrhgt * 0.045),child : Text("Add",style: TextStyle(color: Colors.greenAccent.shade200,fontSize: scrhgt * scrwid / 10000))),),
-                RaisedButton(onPressed: (){},elevation: 50, child: Padding(padding: EdgeInsets.symmetric(horizontal: scrwid * 0.045,vertical: scrhgt * 0.045),child : Text("Subtract",style: TextStyle(color: Colors.greenAccent.shade200,fontSize: scrhgt * scrwid / 10000))),),
+                MaterialButton(
+                  onPressed: _add,
+                  elevation: 50,
+                  color: Colors.cyan[100],
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: scrwid * 0.055,vertical: scrhgt * 0.035),
+                    child : Text("Add",style: TextStyle(color: Colors.blueAccent,fontSize: scrhgt * scrwid / 16000))
+                  ),
+                ),
+                MaterialButton(
+                  onPressed: _subtract,
+                  elevation: 50,
+                  color: Colors.cyan[100],
+                   child: Padding(
+                     padding: EdgeInsets.symmetric(horizontal: scrwid * 0.020,vertical: scrhgt * 0.035),
+                     child : Text("Subtract",style: TextStyle(color: Colors.blueAccent,fontSize: scrhgt * scrwid / 16000))
+                  ),
+                ),
               ],
               
             ),
@@ -117,14 +212,31 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                RaisedButton(onPressed: (){},elevation: 50, child: Padding(padding: EdgeInsets.symmetric(horizontal: scrwid * 0.045,vertical: scrhgt * 0.045),child : Text("Multiply",style: TextStyle(color: Colors.greenAccent.shade200,fontSize: scrhgt * scrwid / 10000))),),
-                RaisedButton(onPressed: (){},elevation: 50, child: Padding(padding: EdgeInsets.symmetric(horizontal: scrwid * 0.045,vertical: scrhgt * 0.045),child : Text("Divide",style: TextStyle(color: Colors.greenAccent.shade200,fontSize: scrhgt * scrwid / 10000))),),
+                MaterialButton(
+                  onPressed: _multiply,
+                  elevation: 50,
+                  color: Colors.cyan[100],
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: scrwid * 0.020,vertical: scrhgt * 0.035),
+                    child : Text("Multiply",style: TextStyle(color: Colors.blueAccent,fontSize: scrhgt * scrwid / 16000))
+                  ),
+                ),
+                MaterialButton(
+                  onPressed: _divide,
+                   elevation: 50,
+                   color: Colors.cyan[100], 
+                   child: Padding(
+                     padding: EdgeInsets.symmetric(horizontal: scrwid * 0.030,vertical: scrhgt * 0.035),
+                      child : Text("Divide",style: TextStyle(color: Colors.blueAccent,fontSize: scrhgt * scrwid / 16000))
+                  ),
+                ),
               ],
             ),
           ],
           
         
         ),
+        
       ),
     ); 
   }

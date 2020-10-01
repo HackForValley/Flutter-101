@@ -1,6 +1,6 @@
 # Flutter-101
 
-This Repository is made under Hack For Valley oraganised by Developer Students Club(DSC-CIET).This event was organised virtually on Google Meet under the able mentorship of DSC-CIET Android Lead Mr. Yashank Jhamb.This was a one week virtual workshop in which Flutter was taught from Scratch.At the end of workshop each student made a mini project.The corresponding code of mini projects are added successfully in this repository.This was indeed a great learning experience.
+This Repository is made under Hack For Valley oraganised by Developer Students Club(DSC-CIET).This event was organised virtually on Google Meet under the able mentorship of DSC-CIET Lead Mr. Yashank.This was a one week virtual workshop in which Flutter was taught from Scratch.At the end of workshop each student made a mini project.The corresponding code of mini projects are added successfully in this repository.This was indeed a great learning experience.
 
 
 # Mentor
